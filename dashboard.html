@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student EcoCredits Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="top-bar">
+            <div class="logo-container">
+                <img src="eco-logo.png" alt="EcoRewards Logo" class="logo">
+                <h2>Smart<span>Credits</span></h2>
+            </div>
+            
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="user-profile" id="userProfileMenu">
+                <div class="notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </div>
+                <div class="profile">
+                    <img src="avatar.png" alt="User Avatar">
+                    <span id="userIdDisplay">sec22ci045</span>
+                    <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </div>
+            </div>
+        </header>
+        
+        <main class="main-content">
+            <div class="welcome-section">
+                <h1>Welcome, <span id="userGreeting">Student</span>!</h1>
+                <p>Your eco-friendly efforts are making a difference</p>
+            </div>
+            
+            <div class="stats-cards">
+                <div class="card primary">
+                    <div class="card-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Total Credits</h3>
+                        <h2 id="totalCredits">0</h2>
+                    </div>
+                </div>
+                
+                <div class="card success">
+                    <div class="card-icon">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Waste Disposed</h3>
+                        <h2 id="wasteDisposed">0 kg</h2>
+                    </div>
+                </div>
+                
+                <div class="card warning">
+                    <div class="card-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Rank</h3>
+                        <h2 id="userRank">Beginner</h2>
+                    </div>
+                </div>
+                
+                <div class="card info">
+                    <div class="card-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Active Days</h3>
+                        <h2 id="currentStreak">0 days</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-container">
+                    <div class="progress-header">
+                        <h3>Next Rank Progress</h3>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="rankProgressBar"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span id="currentRankName">Beginner</span>
+                        <span id="nextRankCredits">100 credits needed for next rank</span>
+                        <span id="nextRankName">Eco Helper</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="grid-item recent-activity">
+                    <div class="item-header">
+                        <h3>Recent Activity</h3>
+                        <div class="header-actions">
+                            <button id="refreshActivity" class="action-btn"><i class="fas fa-sync-alt"></i></button>
+                        </div>
+                    </div>
+                    <ul class="activity-list" id="activityList">
+                        <!-- Activity items will be added dynamically -->
+                    </ul>
+                </div>
+                
+                <div class="grid-item available-rewards">
+                    <div class="item-header">
+                        <h3>Available Rewards</h3>
+                        <div class="header-actions">
+                            <span class="available-credits"><i class="fas fa-coins"></i> <span id="availableCredits">0</span> credits</span>
+                        </div>
+                    </div>
+                    <div id="rewardsPreview" class="rewards-preview">
+                        <!-- Rewards preview will be added dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-item next-actions">
+                <div class="item-header">
+                    <h3>How to Earn More Credits</h3>
+                    <div class="header-actions">
+                        <button id="showTip" class="tip-btn"><i class="fas fa-lightbulb"></i> Tip</button>
+                    </div>
+                </div>
+                <div class="actions-container">
+                    <div class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <div class="action-details">
+                            <h4>Recycle Plastic Bottles</h4>
+                            <p>5-10 credits per bottle</p>
+                        </div>
+                    </div>
+                    <div class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <div class="action-details">
+                            <h4>Recycle Paper Waste</h4>
+                            <p>3-8 credits per kg</p>
+                        </div>
+                    </div>
+                    <div class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="action-details">
+                            <h4>Recycle Food Containers</h4>
+                            <p>4-7 credits per container</p>
+                        </div>
+                    </div>
+                    <div class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-trash"></i>
+                        </div>
+                        <div class="action-details">
+                            <h4>Recycle Aluminum Cans</h4>
+                            <p>5-10 credits per can</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="achievement-section">
+                <div class="item-header">
+                    <h3>Your Achievements</h3>
+                </div>
+                <div class="badges-container" id="badgesContainer">
+                    <!-- Badges will be loaded dynamically -->
+                </div>
+            </div>
+        </main>
+
+        <footer class="dashboard-footer">
+            <div class="footer-links">
+                <a href="#" id="aboutLink">About</a>
+                <a href="#" id="helpLink">Help</a>
+                <a href="#" id="privacyLink">Privacy</a>
+                <a href="#" id="termsLink">Terms</a>
+            </div>
+            <p>&copy; 2024 SmartCredits - Student Recycling Initiative</p>
+        </footer>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="tipModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2><i class="fas fa-lightbulb"></i> Eco Tip</h2>
+            </div>
+            <div class="modal-body">
+                <p id="ecoTipText">Rinse your recyclables before disposing them to prevent contamination and earn more credits!</p>
+            </div>
+            <div class="modal-footer">
+                <button id="nextTip" class="btn-primary">Next Tip</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="rewardModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2><i class="fas fa-gift"></i> <span id="rewardName">Reward</span></h2>
+            </div>
+            <div class="modal-body">
+                <div class="reward-details">
+                    <div class="reward-icon-large">
+                        <i id="rewardIcon" class="fas fa-gift"></i>
+                    </div>
+                    <p id="rewardDescription">Reward description will appear here</p>
+                    <div class="reward-cost-large">
+                        <i class="fas fa-coins"></i> <span id="rewardCost">0</span> credits
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelRedemption" class="btn-secondary">Cancel</button>
+                <button id="confirmRedemption" class="btn-primary">Redeem Now</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="dashboard.js"></script>
+</body>
+</html> 
